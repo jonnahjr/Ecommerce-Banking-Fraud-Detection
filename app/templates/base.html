@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>{% block title %}Fraud AI{% endblock %}</title>
+        <link href="{{url_for('static',filename='css/main.css')}}" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lato:wght@400;700&family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@400;700&family=Avenir:wght@400;700&family=Georgia:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/flowbite@latest/dist/flowbite.min.js"></script>
+    </head>
+
+    <body>
+        {% include("_navigation.html") %}
+        <main class="bg-center bg-no-repeat bg-adey-image bg-slate-800 bg-blend-multiply font-merriweather h-screen">
+            {% block content %}<p>No messages.</p>{% endblock content %}
+            {% include("_footer.html") %}
+        </main>
+        
+    </body>
+</html>
