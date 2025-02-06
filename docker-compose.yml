@@ -1,0 +1,41 @@
+services:
+  web:
+    build: .
+    container_name: flask_app
+    working_dir: app
+    command: gunicorn -b 0.0.0.0:8000 app:app
+    ports:
+      - "8000:8000"
+    environment:
+      - FLASK_APP=app
+      - FLASK_SECRET_KEY=${FLASK_SECRET_KEY}
+      - SQLALCHEMY_DATABASE_URI=postgresql://postgres:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      - ENVIRONMENT=${ENVIRONMENT}
+    depends_on:
+      - db
+      - css
+    volumes:
+      - .:/app
+
+  db:
+    image: postgres:17
+    container_name: postgres_db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  css:
+    image: node:14
+    container_name: css_processor
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: ["npm", "run", "create-css"]
+
+volumes:
+  postgres_data:
