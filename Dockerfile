@@ -4,7 +4,7 @@ FROM python:3.11
 # Set environment variables for Flask
 ENV PYTHONUNBUFFERED=1
 
-# Set working directory
+# Set working directory 
 WORKDIR /app
 
 # Copy requirements file and install dependencies
