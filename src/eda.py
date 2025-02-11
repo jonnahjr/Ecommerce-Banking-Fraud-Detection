@@ -1,6 +1,6 @@
 import seaborn as sns
 import matplotlib.pyplot as plt
-
+ 
 def univariate_analysis(df, column):
     """Plot univariate analysis for a given column."""
     plt.figure(figsize=(8, 6))
