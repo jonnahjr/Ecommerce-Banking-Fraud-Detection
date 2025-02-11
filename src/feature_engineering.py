@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+ 
 def transaction_frequency(df, user_column):
     """Calculate transaction frequency for each user."""
     return df.groupby(user_column).size().reset_index(name='transaction_count')
