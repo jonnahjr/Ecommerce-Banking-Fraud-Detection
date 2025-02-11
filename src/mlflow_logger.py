@@ -2,7 +2,7 @@ import mlflow
 import mlflow.sklearn
 import mlflow.xgboost
 import os
-
+ 
 def initialize_mlflow(experiment_name, tracking_uri):
     # Set the tracking URI for MLflow
     mlflow.set_tracking_uri(tracking_uri)
