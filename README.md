@@ -57,49 +57,53 @@ Each task will contribute to building a comprehensive fraud detection system tha
 
 ```bash
 
+fraud-detection/
   ├── app/
-  │   ├── static/   
-  │   ├── templates/ 
-  │   ├── __init__.py               
-  │   └── database.py
-  │   ├── data.py
-  │   ├── xgb_model.py                
-  │   └── model.py
-  │   ├── dashboard.py     
-  │   ├── schema.sql       
-  │   ├── tailwind.config.js                           
-  ├── data/
-  ├── lime_explanations/
-  ├── models/
-  ├── plots/
-  ├── notebooks/
-  │   ├── kaim-week-8=9-task1.ipynb 
-  │   ├── kaim-week-8=9-task2.ipynb
-  │   ├── kaim-week-8=9-task3.ipynb   
-  ├── scripts/
-  │   ├── __init__.py     
-  │   ├── main.py                      
-  ├── src/
-  │   ├── __init__.py     
-  │   ├── data_loader.py                
-  │   ├── data_cleaning.py
-  │   ├── data_preprocessing.py
-  │   ├── eda.py
-  │   ├── feature_engineering.py
-  │   ├── merge_fraud_and_ip_data.py
-  │   ├── mlflow_logger.py
-  │   ├── model_definition.py
-  │   ├── scaling_encoding.py
-  │   ├── utils.py            
-  ├── tests/
-  │   ├── __init__.py     
-  │   ├── test_data_loader.py 
-  ├── .env                             
-  ├── .gitignore       
-  ├── Dockerfile
-  ├── docker-compose.yml        
-  ├── requirements.txt
-  └── README.md                   #
+  │   ├── static/                  # Static files (CSS, JS, images)
+  │   ├── templates/               # HTML templates for the Flask app
+  │   ├── __init__.py              # Initializes the Flask app
+  │   ├── database.py             # Handles database connections and operations
+  │   ├── data.py                 # Data loading and preprocessing for the app
+  │   ├── xgb_model.py            # XGBoost model implementation
+  │   ├── model.py                # Main model training and evaluation logic
+  │   ├── dashboard.py            # Dash-based dashboard for fraud insights
+  │   ├── schema.sql              # SQL schema for database setup
+  │   ├── tailwind.config.js      # Tailwind CSS configuration
+  ├── data/                        # Raw and processed datasets
+  │   ├── Fraud_Data.csv          # E-commerce transaction data
+  │   ├── creditcard.csv          # Bank credit card transaction data
+  │   ├── IpAddress_to_Country.csv # IP address to country mapping
+  ├── lime_explanations/           # LIME explanations for model predictions
+  ├── models/                      # Trained model files
+  ├── plots/                       # Visualizations and plots
+  ├── notebooks/                   # Jupyter notebooks for exploration and tasks
+  │   ├── kaim-week-8=9-task1.ipynb # Task 1 notebook
+  │   ├── kaim-week-8=9-task2.ipynb # Task 2 notebook
+  │   ├── kaim-week-8=9-task3.ipynb # Task 3 notebook
+  ├── scripts/                     # Utility scripts
+  │   ├── __init__.py             # Initializes the scripts module
+  │   ├── main.py                 # Main script to run the application
+  ├── src/                         # Source code for data processing and modeling
+  │   ├── __init__.py             # Initializes the src module
+  │   ├── data_loader.py          # Loads datasets
+  │   ├── data_cleaning.py        # Cleans raw data
+  │   ├── data_preprocessing.py   # Preprocesses data for modeling
+  │   ├── eda.py                  # Exploratory data analysis
+  │   ├── feature_engineering.py  # Feature engineering logic
+  │   ├── merge_fraud_and_ip_data.py # Merges fraud and IP data
+  │   ├── mlflow_logger.py        # Logs experiments using MLflow
+  │   ├── model_definition.py     # Defines machine learning models
+  │   ├── scaling_encoding.py     # Handles scaling and encoding
+  │   ├── utils.py                # Utility functions
+  ├── tests/                       # Unit and integration tests
+  │   ├── __init__.py             # Initializes the tests module
+  │   ├── test_data_loader.py     # Tests for data_loader.py
+  ├── .env                        # Environment variables
+  ├── .gitignore                  # Specifies files to ignore in Git
+  ├── Dockerfile                  # Dockerfile for containerization
+  ├── docker-compose.yml          # Docker Compose configuration
+  ├── requirements.txt            # Python dependencies
+  └── README.md                   # Project documentation                 #
 
 ```
 
@@ -146,4 +150,119 @@ pip install -r requirements.txt
 
 ```python
 
+# go to fraud directory
+cd app
 
+# Tailwind CSS
+npm install tailwindcss
+
+```
+
+* Create `tailwind.config.js` file
+
+```python
+# create tailwind.config.js file
+npx tailwindcss init
+
+```
+
+* Copy and add the following to `package.json` file so that your css will be updated every time you make a change
+
+```python
+
+"scripts": {
+    "create-css": "npx tailwindcss -i ./static/src/input.css -o ./static/css/main.css --watch"
+  }
+
+```
+
+* Initialize tailwindcss
+
+```python
+
+# Run the following every time you update tailwind css
+npm run create-css
+
+```
+
+* In a separate terminal, in the parent directory, initialize the database
+
+```python
+
+# Initialize database
+python -m flask --app app init-db
+
+```
+
+* Run Flask App
+
+```python
+
+# Run flask
+python -m flask --app app run --port 8000 --debug
+
+```
+
+### Visualizations
+
+#### MLflow
+
+#### Model Comparison
+
+![MLflow compare](plots/mlflow_compare.png)
+
+#### Xgboost Model
+
+![Xgboost model](plots/xgboost_mlflow.png)
+
+### SHAP
+
+#### Summary Plot
+
+![XGBoost - Summary Plot for fraud data](plots/fraud_data_XGBClassifier_shap_summary.png)
+
+
+#### Dependence Plot
+
+![XGBoost - Shap Dependence](plots/fraud_data_XGBClassifier_shap_dependence.png)
+
+### LIME
+
+![XGBoost - Feature Importance](plots/fraud_data_XGBClassifier_lime_feature_importance.png)
+
+### Flask App
+
+#### Home
+
+![Home](plots/home.png)
+
+
+#### Dataset
+
+![Dataset](plots/data.png)
+
+#### Create
+
+![Create](plots/create.png)
+
+#### History
+
+![History](plots/history.png)
+
+#### Result
+
+![Result](plots/result.png)
+
+### Dashboard
+
+#### Summary
+
+![Dash Summary](plots/dash-summary.png)
+
+#### Distribution
+
+![Distribution](plots/dash-distribution.png)
+
+#### Others
+
+![Dash Others](plots/dash-other.png)
