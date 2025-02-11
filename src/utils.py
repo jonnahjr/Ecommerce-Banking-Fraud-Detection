@@ -4,7 +4,7 @@ import pandas as pd
 def convert_ip_to_int(ip_address):
     """
     Convert an IP address string to an integer by removing dots.
-    
+     
     Args:
     - ip_address: IP address as a string
     
