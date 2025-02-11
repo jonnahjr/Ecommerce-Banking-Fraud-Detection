@@ -1,5 +1,5 @@
 from sklearn.preprocessing import StandardScaler, LabelEncoder
-
+ 
 def normalize_features(df, columns):
     """Normalize the numerical features using StandardScaler."""
     scaler = StandardScaler()
