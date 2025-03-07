@@ -113,8 +113,8 @@ fraud-detection/
 
 ```python
 
-git clone https://github.com/tedoaba/KAIM-W8-9.git
-cd KAIM-W8-9
+git clone https://github.com/jonnahjr/Ecommerce-Banking-Fraud-Detection.git
+cd Ecommerce-Banking-Fraud-Detection
 
 ```
 
