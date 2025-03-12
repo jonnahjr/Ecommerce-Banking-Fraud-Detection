@@ -266,3 +266,12 @@ python -m flask --app app run --port 8000 --debug
 #### Others
 
 ![Dash Others](plots/dash-other.png)
+
+#### Enhanced Dashboard
+
+![Dash Enhanced Dashboard](plots/Screenshot_1.png)
+![Dash Enhanced Dashboard](plots/Screenshot_2.png)
+![Dash Enhanced Dashboard](plots/Screenshot_3.png)
+![Dash Enhanced Dashboard](plots/Screenshot_4.png)
+![Dash Enhanced Dashboard](plots/Screenshot_5.png)
+![Dash Enhanced Dashboard](plots/Screenshot_6.png)
